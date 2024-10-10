@@ -3,8 +3,10 @@ import {
 	PrimaryGeneratedColumn,
 	Column,
 	CreateDateColumn,
-	UpdateDateColumn
+	UpdateDateColumn,
+	OneToMany
 } from 'typeorm'
+import { HistoryEntity } from '../../history/entities/history.entity'
 
 @Entity('user')
 export class UserEntity {
@@ -31,4 +33,7 @@ export class UserEntity {
 
 	@UpdateDateColumn()
 	updatedAt: Date
+
+	@OneToMany(() => HistoryEntity, history => history.user)
+	histories: HistoryEntity[]
 }
