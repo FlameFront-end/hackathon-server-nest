@@ -13,9 +13,6 @@ export class HistoryEntity {
 	@PrimaryGeneratedColumn()
 	id: number
 
-	@Column({ nullable: true })
-	nick: string
-
 	@Column()
 	downloadSpeed: number
 

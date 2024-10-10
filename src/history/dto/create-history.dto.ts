@@ -8,11 +8,6 @@ import {
 import { ApiProperty } from '@nestjs/swagger'
 
 export class CreateHistoryDto {
-	@ApiProperty({ example: 'nick' })
-	@IsOptional()
-	@IsString()
-	nick?: string
-
 	@ApiProperty({ example: 60 })
 	@IsNotEmpty()
 	@IsString()
