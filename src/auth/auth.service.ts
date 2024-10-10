@@ -23,11 +23,10 @@ export class AuthService {
 	}
 
 	async login(user: IUser) {
-		const { id, email, nick, ava } = user
+		const { id, email, nick } = user
 
 		return {
 			id,
-			ava,
 			nick,
 			email,
 			token: this.jwtService.sign({ id: user.id, email: user.email })
@@ -44,7 +43,6 @@ export class AuthService {
 			const user = await this.userService.findBuId(decoded.id)
 			return {
 				token: token,
-				ava: user.ava,
 				email: user.email,
 				id: user.id,
 				name: user.nick,

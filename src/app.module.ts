@@ -4,13 +4,11 @@ import { AuthModule } from './auth/auth.module'
 import { UserEntity } from './user/entities/user.entity'
 import { UserModule } from './user/user.module'
 import { ConfigModule } from '@nestjs/config'
-import { UploadModule } from './upload/upload.module'
 
 @Module({
 	imports: [
 		UserModule,
 		AuthModule,
-		UploadModule,
 		ConfigModule.forRoot({
 			envFilePath: `.env.${process.env.NODE_ENV}`
 		}),

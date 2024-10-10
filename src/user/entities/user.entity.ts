@@ -23,9 +23,6 @@ export class UserEntity {
 	@Column({ nullable: true })
 	birthdate: string
 
-	@Column({ nullable: true })
-	ava: string
-
 	@Column({ default: false })
 	isAdmin: boolean
 

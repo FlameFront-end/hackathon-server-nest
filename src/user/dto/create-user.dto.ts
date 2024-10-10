@@ -13,9 +13,6 @@ export class CreateUserDto {
 	@ApiProperty({ example: 'Ivan' })
 	readonly name: string
 
-	@ApiProperty({ example: 'https://example.com/avatar.jpg', required: false })
-	readonly ava?: string
-
 	@ApiProperty({ example: false })
 	readonly isAdmin?: boolean
 }
