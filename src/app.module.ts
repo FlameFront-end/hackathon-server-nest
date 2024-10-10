@@ -14,11 +14,11 @@ import { ConfigModule } from '@nestjs/config'
 		}),
 		TypeOrmModule.forRoot({
 			type: 'postgres',
-			host: process.env.POSTGRES_HOST,
-			port: Number(process.env.POSTGRESS_PORT),
-			username: process.env.POSTGRES_USER,
-			password: process.env.POSTGRESS_PASSWORD,
-			database: process.env.POSTGRES_DB,
+			host: 'jelani.db.elephantsql.com',
+			port: 5432,
+			username: 'yemrjdkh',
+			password: 'PZZIbeyBdQpQ79Pase1C43w3Tt40Mr-N',
+			database: 'yemrjdkh',
 			entities: [UserEntity],
 			synchronize: true
 		}),
