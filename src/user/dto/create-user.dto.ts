@@ -10,9 +10,6 @@ export class CreateUserDto {
 	@ApiProperty({ example: 'flame' })
 	readonly nick: string
 
-	@ApiProperty({ example: 'Ivan' })
-	readonly name: string
-
 	@ApiProperty({ example: false })
 	readonly isAdmin?: boolean
 }
