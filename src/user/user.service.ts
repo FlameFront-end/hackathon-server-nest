@@ -62,15 +62,9 @@ export class UserService {
 	}
 
 	async findBuId(id: number) {
-		const user = await this.userRepository.findOne({
-			where: { id },
-			relations: ['histories']
+		return await this.userRepository.findOne({
+			where: { id }
 		})
-
-		return {
-			...user,
-			countHistories: user.histories.length
-		}
 	}
 
 	async getAllUsers() {
