@@ -50,9 +50,15 @@ export class UserService {
 	}
 
 	async findOne(email: string) {
-		return await this.userRepository.findOne({
-			where: { email: email }
+		const user = await this.userRepository.findOne({
+			where: { email },
+			relations: ['histories']
 		})
+
+		return {
+			...user,
+			countHistories: user.histories.length
+		}
 	}
 
 	async findBuId(id: number) {
@@ -72,7 +78,9 @@ export class UserService {
 	}
 
 	async getUserByEmail(email: string) {
-		return await this.findOne(email)
+		return await this.userRepository.findOne({
+			where: { email }
+		})
 	}
 
 	async updatePassword(userId: number, newPassword: string): Promise<void> {
