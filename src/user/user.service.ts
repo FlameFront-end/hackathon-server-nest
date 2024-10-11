@@ -50,15 +50,9 @@ export class UserService {
 	}
 
 	async findOne(email: string) {
-		const user = await this.userRepository.findOne({
-			where: { email },
-			relations: ['histories']
+		return await this.userRepository.findOne({
+			where: { email }
 		})
-
-		return {
-			...user,
-			countHistories: user.histories.length
-		}
 	}
 
 	async findBuId(id: number) {
