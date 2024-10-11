@@ -45,7 +45,16 @@ export class UserService {
 		const user = await this.userRepository.findOne({
 			where: { id }
 		})
+		if (!user) {
+			throw new Error('Пользователь не найден')
+		}
+
 		Object.assign(user, updateUserDto)
+
+		if (updateUserDto.password) {
+			user.password = await argon2.hash(updateUserDto.password)
+		}
+
 		return this.userRepository.save(user)
 	}
 
