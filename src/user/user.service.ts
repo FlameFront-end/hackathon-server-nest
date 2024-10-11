@@ -42,22 +42,29 @@ export class UserService {
 	}
 
 	async update(id: number, updateUserDto: UpdateUserDto) {
-		const user = await this.findBuId(id)
+		const user = await this.userRepository.findOne({
+			where: { id }
+		})
 		Object.assign(user, updateUserDto)
 		return this.userRepository.save(user)
 	}
 
 	async findOne(email: string) {
 		return await this.userRepository.findOne({
-			where: { email: email },
-			relations: ['histories']
+			where: { email: email }
 		})
 	}
 
 	async findBuId(id: number) {
-		return await this.userRepository.findOne({
-			where: { id }
+		const user = await this.userRepository.findOne({
+			where: { id },
+			relations: ['histories']
 		})
+
+		return {
+			...user,
+			countHistories: user.histories.length
+		}
 	}
 
 	async getAllUsers() {
