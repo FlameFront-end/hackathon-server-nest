@@ -49,7 +49,8 @@ export class UserService {
 
 	async findOne(email: string) {
 		return await this.userRepository.findOne({
-			where: { email: email }
+			where: { email: email },
+			relations: ['histories']
 		})
 	}
 
